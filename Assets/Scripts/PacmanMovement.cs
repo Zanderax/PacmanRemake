@@ -7,13 +7,17 @@ public class PacmanMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        RigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleMovementInput();
+    }
+
+    void FixedUpdate()
+    {
         DoMovement();
     }
 
@@ -43,35 +47,34 @@ public class PacmanMovement : MonoBehaviour
 
     void DoMovement()
     {
-        float MovementAmount = MovementSpeed * MovementFactor;
+        Vector2 velocity = new Vector2(0f, 0f);
         switch(CurrentDirection)
         {
             case MovementDirection.Left:
             {
-                transform.Translate(-MovementAmount, 0f, 0f, Space.World);
+                velocity = new Vector2(-MovementSpeed, 0f);
                 break;
             }
             case MovementDirection.Right:
             {
-                transform.Translate(MovementAmount, 0f, 0f, Space.World);
+                velocity = new Vector2(MovementSpeed, 0f);
                 break;
             }
             case MovementDirection.Down:
             {
-                transform.Translate(0f, -MovementAmount, 0f, Space.World);
+                velocity = new Vector2(0f, -MovementSpeed);
                 break;
             }
             case MovementDirection.Up:
             {
-                transform.Translate(0f, MovementAmount, 0f, Space.World);
+                velocity = new Vector2(0f, MovementSpeed);
                 break;
             }
-
         }
+        RigidBody.MovePosition(RigidBody.position + velocity * Time.fixedDeltaTime);
     }
 
-    private float MovementSpeed = 0.02f;
-    private float MovementFactor = 1.0f;
+    private float MovementSpeed = 2.0f;
 
     private enum MovementDirection
     {
@@ -82,4 +85,6 @@ public class PacmanMovement : MonoBehaviour
         Up
     }
     private MovementDirection CurrentDirection = MovementDirection.Still;
+
+    private Rigidbody2D RigidBody;
 }
