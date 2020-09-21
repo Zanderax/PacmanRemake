@@ -13,7 +13,25 @@ public class PacmanMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleMovementInput();
+        // HandleMovementInput();
+
+        // Hardcoded Movement for Assignment 3
+        if(CurrentDirection == MovementDirection.Left && transform.position.x < -4.8)
+        {
+            CurrentDirection = MovementDirection.Up;
+        }
+        if(CurrentDirection == MovementDirection.Up && transform.position.y > 2.4)
+        {
+            CurrentDirection = MovementDirection.Right;
+        }
+        if(CurrentDirection == MovementDirection.Right && transform.position.x > -0.8)
+        {
+            CurrentDirection = MovementDirection.Down;
+        }
+        if(CurrentDirection == MovementDirection.Down && transform.position.y < -0.8)
+        {
+            CurrentDirection = MovementDirection.Left;
+        }
     }
 
     void FixedUpdate()
@@ -84,7 +102,7 @@ public class PacmanMovement : MonoBehaviour
         Down,
         Up
     }
-    private MovementDirection CurrentDirection = MovementDirection.Still;
+    private MovementDirection CurrentDirection = MovementDirection.Left;
 
     private Rigidbody2D RigidBody;
 }
