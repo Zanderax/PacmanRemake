@@ -16,19 +16,19 @@ public class PacmanMovement : MonoBehaviour
         // HandleMovementInput();
 
         // Hardcoded Movement for Assignment 3
-        if(CurrentDirection == MovementDirection.Left && transform.position.x < -4.8)
+        if(CurrentDirection == MovementDirection.Left && transform.position.x < -11.2)
         {
             CurrentDirection = MovementDirection.Up;
         }
-        if(CurrentDirection == MovementDirection.Up && transform.position.y > 2.4)
+        if(CurrentDirection == MovementDirection.Up && transform.position.y > 7.2)
         {
             CurrentDirection = MovementDirection.Right;
         }
-        if(CurrentDirection == MovementDirection.Right && transform.position.x > -0.8)
+        if(CurrentDirection == MovementDirection.Right && transform.position.x > -7.2)
         {
             CurrentDirection = MovementDirection.Down;
         }
-        if(CurrentDirection == MovementDirection.Down && transform.position.y < -0.8)
+        if(CurrentDirection == MovementDirection.Down && transform.position.y < 4)
         {
             CurrentDirection = MovementDirection.Left;
         }

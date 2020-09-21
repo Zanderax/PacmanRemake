@@ -140,8 +140,7 @@ public class LevelGenerator : MonoBehaviour
         return Quaternion.identity;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void DrawMap(float TopLeftXPosition, float TopLeftYPosition, float XCellOffset, float YCellOffset)
     {
         for(int x = 0; x < 13; x++)
         {
@@ -187,6 +186,15 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        DrawMap(-12f, 8f, 0.8f, -0.8f);
+        DrawMap(9.6f, 8f, -0.8f, -0.8f);
+        DrawMap(-12f, -12.8f, 0.8f, 0.8f);
+        DrawMap(9.6f, -12.8f, -0.8f, 0.8f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -210,12 +218,6 @@ public class LevelGenerator : MonoBehaviour
         {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
         {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
     };
-
-    float TopLeftXPosition = -5.6f;
-    float TopLeftYPosition = 3.2f;
-
-    float XCellOffset = 0.8f;
-    float YCellOffset = -0.8f;
 
     [SerializeField]
     Object OutsideCorner;
